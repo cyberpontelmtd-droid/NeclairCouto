@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-brand-pink/50 to-white">
+        <section id="hero" className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-16 md:pt-20 md:pb-0 overflow-hidden bg-gradient-to-b from-brand-pink/50 to-white">
             {/* Background decoration */}
-            <div className="absolute top-20 right-0 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl -z-10" />
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-purple/10 rounded-full blur-3xl -z-10" />
+            <div className="absolute top-20 -right-32 w-64 h-64 md:w-96 md:h-96 bg-brand-accent/15 rounded-full blur-3xl -z-10" />
+            <div className="absolute bottom-0 -left-32 w-48 h-48 md:w-72 md:h-72 bg-brand-purple/10 rounded-full blur-3xl -z-10" />
 
             <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
                 <motion.div
@@ -18,7 +18,7 @@ export const Hero = () => {
                     className="text-left"
                 >
                     <span className="inline-block px-4 py-1 bg-brand-pink border border-brand-accent rounded-full text-brand-purple text-sm font-medium mb-4 uppercase tracking-wider">
-                        Especialista em Furação Humanizada
+                        Especialista em Perfuração Humanizada
                     </span>
                     <h1 className="text-4xl md:text-6xl font-bold text-brand-dark mb-6 leading-tight">
                         Beleza, Segurança e <span className="text-brand-purple italic">Carinho</span> em Cada Detalhe
@@ -28,7 +28,7 @@ export const Hero = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="https://wa.me/5500000000000"
+                            href="https://wa.me/5551996715427?text=Ol%C3%A1%20Neclair%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%3F"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-8 py-4 bg-brand-purple text-white rounded-full font-medium hover:bg-brand-dark transition-all text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -50,15 +50,12 @@ export const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center"
                 >
-                    {/* Main Hero Image */}
-                    <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full border-4 border-white shadow-2xl overflow-hidden bg-white flex items-center justify-center">
-                        {/* Using Logo as placeholder if no photo provided yet */}
+                    <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] rounded-full border-4 border-white shadow-xl md:shadow-2xl overflow-hidden bg-white flex items-center justify-center">
                         <Image
-                            src="/logo.png"
+                            src="/logo-hero.png"
                             alt="Neclair Couto"
-                            width={300}
-                            height={300}
-                            className="object-contain p-8"
+                            fill
+                            className="object-cover scale-[1.2]"
                         />
                     </div>
 

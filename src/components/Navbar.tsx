@@ -32,9 +32,8 @@ export const Navbar = () => {
         >
             <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
                 <Link href="/" className="flex items-center gap-2">
-                    {/* Fallback text if logo fails, but we have logo.png in public */}
-                    <div className="relative w-10 h-10 md:w-12 md:h-12">
-                        <Image src="/logo.png" alt="Neclair Couto Logo" fill className="object-contain" />
+                    <div className="relative w-12 h-12 md:w-16 md:h-16">
+                        <Image src="/logo-icon.png" alt="Neclair Couto - Body Piercing | Furo Humanizado" fill className="object-contain" />
                     </div>
                     <span className={`font-serif text-xl md:text-2xl font-bold ${scrolled ? "text-brand-purple" : "text-brand-purple"}`}>
                         Neclair Couto
@@ -53,7 +52,7 @@ export const Navbar = () => {
                         </Link>
                     ))}
                     <a
-                        href="https://wa.me/5500000000000" // Placeholder phone
+                        href="https://wa.me/5551996715427?text=Ol%C3%A1%20Neclair%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%3F"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-brand-purple text-white px-5 py-2 rounded-full hover:bg-brand-dark transition-colors shadow-md"
@@ -91,7 +90,7 @@ export const Navbar = () => {
                             </Link>
                         ))}
                         <a
-                            href="https://wa.me/5500000000000"
+                            href="https://wa.me/5551996715427?text=Ol%C3%A1%20Neclair%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%3F"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-brand-purple text-white px-8 py-3 rounded-full text-lg w-3/4 text-center"

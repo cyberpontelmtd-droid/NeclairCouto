@@ -5,7 +5,7 @@ export const About = () => {
         <section id="about" className="py-20 bg-white">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Sobre Mim</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Sobre Nós</h2>
                     <div className="w-24 h-1 bg-brand-purple mx-auto rounded-full" />
                 </div>
 
@@ -45,7 +45,7 @@ export const About = () => {
                     <div className="flex-1">
                         <h3 className="text-2xl font-serif font-bold text-brand-purple mb-4">Neclair Couto</h3>
                         <p className="text-gray-700 leading-relaxed mb-4">
-                            Com anos de experiência e paixão pela arte do body piercing, dedico meu trabalho a realçar a beleza de cada cliente de forma única. Minha especialização em furação humanizada nasceu do desejo de proporcionar às mães e aos bebês um momento de tranquilidade e segurança, transformando o primeiro brinco em uma memória doce, não traumática.
+                            Com anos de experiência e paixão pela arte do body piercing, dedico meu trabalho a realçar a beleza de cada cliente de forma única. Minha especialização em perfuração humanizada nasceu do desejo de proporcionar às mães e aos bebês um momento de tranquilidade e segurança, transformando o primeiro brinco em uma memória doce, não traumática.
                         </p>
                         <p className="text-gray-700 font-medium italic">
                             "Minha missão é trazer brilho com responsabilidade e muito amor."

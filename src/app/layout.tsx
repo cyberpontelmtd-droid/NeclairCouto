@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -7,15 +7,15 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const lato = Lato({
-  variable: "--font-lato",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   weight: ["300", "400", "700"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Neclair Couto | Body Piercing & Furação Humanizada",
-  description: "Especialista em Body Piercing e Furação de Orelha Humanizada para bebês. Segurança, higiene e carinho.",
+  title: "Neclair Couto | Body Piercing & Perfuração Humanizada",
+  description: "Especialista em Body Piercing e Perfuração de Orelha Humanizada para bebês. Segurança, higiene e carinho.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${playfair.variable} ${lato.variable} antialiased bg-brand-pink text-brand-dark`}
+        className={`${playfair.variable} ${montserrat.variable} antialiased bg-brand-pink text-brand-dark font-sans`}
       >
         {children}
       </body>
