@@ -22,6 +22,7 @@ export const Navbar = () => {
         { name: "Início", href: "#hero" },
         { name: "Sobre", href: "#about" },
         { name: "Serviços", href: "#services" },
+        { name: "Catálogo", href: "/catalogo" },
         { name: "Contato", href: "#contact" },
     ];
 
