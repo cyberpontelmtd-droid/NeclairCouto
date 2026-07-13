@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: "3002"
+      HOSTNAME: "0.0.0.0"
+    ports:
+      - "127.0.0.1:3002:3002"
+    volumes:
+      - ./data/uploads:/app/data/uploads
