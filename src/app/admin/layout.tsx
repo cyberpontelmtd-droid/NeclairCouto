@@ -20,6 +20,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <Link href="/admin" className="hover:text-brand-accent transition-colors">Dashboard</Link>
             <Link href="/admin/itens" className="hover:text-brand-accent transition-colors">Estoque</Link>
             <Link href="/admin/etiquetas" className="hover:text-brand-accent transition-colors">Etiquetas</Link>
+            <Link href="/admin/reservas" className="hover:text-brand-accent transition-colors">Reservas</Link>
+            <Link href="/admin/caixa" className="hover:text-brand-accent transition-colors">Caixa</Link>
             <Link href="/admin/usuarios" className="hover:text-brand-accent transition-colors">Usuários</Link>
           </nav>
           <div className="flex items-center gap-4">

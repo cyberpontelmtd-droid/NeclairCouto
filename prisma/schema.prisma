@@ -12,6 +12,12 @@ enum Role {
   STAFF
 }
 
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -43,6 +49,8 @@ model Item {
   category    Category?   @relation(fields: [categoryId], references: [id])
   images      ItemImage[]
   labels      Label[]
+  reservationItems ReservationItem[]
+  saleItems   SaleItem[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
@@ -63,4 +71,42 @@ model ItemImage {
   filename  String
   position  Int      @default(0)
   createdAt DateTime @default(now())
+}
+
+model Reservation {
+  id           String            @id @default(cuid())
+  customerName String
+  contact      String
+  status       ReservationStatus @default(PENDING)
+  items        ReservationItem[]
+  sale         Sale?
+  createdAt    DateTime          @default(now())
+}
+
+model ReservationItem {
+  id            String      @id @default(cuid())
+  reservationId String
+  reservation   Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+  itemId        String
+  item          Item        @relation(fields: [itemId], references: [id])
+  quantity      Int         @default(1)
+}
+
+model Sale {
+  id            String       @id @default(cuid())
+  reservationId String?      @unique
+  reservation   Reservation? @relation(fields: [reservationId], references: [id])
+  total         Decimal      @db.Decimal(10, 2)
+  items         SaleItem[]
+  createdAt     DateTime     @default(now())
+}
+
+model SaleItem {
+  id       String  @id @default(cuid())
+  saleId   String
+  sale     Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  itemId   String
+  item     Item    @relation(fields: [itemId], references: [id])
+  quantity Int
+  price    Decimal @db.Decimal(10, 2)
 }
