@@ -5,8 +5,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
 const batchSchema = z.object({
-  quantidade: z.coerce.number().int().min(1).max(500),
-  porFolha: z.coerce.number().int().min(1).max(60),
+  quantidade: z.coerce.number().int().min(1).max(3000),
 });
 
 async function nextLabelCode() {
@@ -21,9 +20,8 @@ async function nextLabelCode() {
 }
 
 export async function generateLabelBatch(formData: FormData) {
-  const { quantidade, porFolha } = batchSchema.parse({
+  const { quantidade } = batchSchema.parse({
     quantidade: formData.get("quantidade"),
-    porFolha: formData.get("porFolha"),
   });
 
   const ids: string[] = [];
@@ -35,6 +33,5 @@ export async function generateLabelBatch(formData: FormData) {
 
   const params = new URLSearchParams();
   ids.forEach((id) => params.append("ids", id));
-  params.set("porFolha", String(porFolha));
   redirect(`/admin/etiquetas/lote/imprimir?${params.toString()}`);
 }
