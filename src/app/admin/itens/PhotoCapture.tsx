@@ -139,10 +139,15 @@ export function PhotoCapture({ name = "images" }: { name?: string }) {
   }, [previews]);
 
   useEffect(() => {
-    if (!hiddenInputRef.current) return;
-    const dt = new DataTransfer();
-    pending.forEach((f) => dt.items.add(f));
-    hiddenInputRef.current.files = dt.files;
+    if (!hiddenInputRef.current || typeof DataTransfer === "undefined") return;
+    try {
+      const dt = new DataTransfer();
+      pending.forEach((f) => dt.items.add(f));
+      hiddenInputRef.current.files = dt.files;
+    } catch {
+      // Older browsers may not support assigning a synthesized FileList;
+      // pending photos just won't be attached to the hidden input in that case.
+    }
   }, [pending]);
 
   function addFiles(files: FileList | null) {
