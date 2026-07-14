@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export default async function EtiquetasPage() {
@@ -8,9 +9,18 @@ export default async function EtiquetasPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-dark mb-2">Gerar etiquetas</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="text-2xl font-bold text-brand-dark">Etiquetas</h1>
+        <Link
+          href="/admin/etiquetas/gerar"
+          className="bg-brand-purple text-white px-6 py-2 rounded-full hover:bg-brand-dark transition-colors text-sm font-bold"
+        >
+          Gerar etiquetas novas (sem produto)
+        </Link>
+      </div>
       <p className="text-gray-500 text-sm mb-6">
-        Selecione as peças e gere uma página pronta para imprimir com QR code + código da peça.
+        Selecione peças já cadastradas para reimprimir suas etiquetas, ou gere etiquetas novas
+        antes de cadastrar o estoque.
       </p>
 
       <form action="/admin/etiquetas/imprimir" method="GET" className="bg-white rounded-2xl shadow-sm p-6">
