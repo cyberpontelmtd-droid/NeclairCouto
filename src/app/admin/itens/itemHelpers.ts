@@ -60,6 +60,15 @@ export async function nextSku() {
   }
 }
 
+export async function linkLabelCodes(itemId: string, codes: string[]) {
+  const uniqueCodes = [...new Set(codes.map((c) => c.trim()).filter(Boolean))];
+  if (uniqueCodes.length === 0) return;
+  await prisma.label.updateMany({
+    where: { code: { in: uniqueCodes }, itemId: null },
+    data: { itemId, linkedAt: new Date() },
+  });
+}
+
 export async function saveImages(itemId: string, files: File[]) {
   const validFiles = files.filter((f) => f && f.size > 0);
   if (validFiles.length === 0) return;

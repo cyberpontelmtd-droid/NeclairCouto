@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { unlink } from "fs/promises";
 import path from "path";
 import { prisma } from "@/lib/prisma";
-import { UPLOAD_DIR, nextSku, parseItemForm, resolveCategoryId, saveImages } from "./itemHelpers";
+import { UPLOAD_DIR, linkLabelCodes, nextSku, parseItemForm, resolveCategoryId, saveImages } from "./itemHelpers";
 
 export async function createItem(formData: FormData) {
   try {
@@ -38,6 +38,7 @@ async function createItemInner(formData: FormData) {
 
   const files = formData.getAll("images") as File[];
   await saveImages(item.id, files);
+  await linkLabelCodes(item.id, formData.getAll("labelCodes") as string[]);
 
   revalidatePath("/admin/itens");
   redirect("/admin/itens");
@@ -63,6 +64,7 @@ export async function updateItem(itemId: string, formData: FormData) {
 
   const files = formData.getAll("images") as File[];
   await saveImages(itemId, files);
+  await linkLabelCodes(itemId, formData.getAll("labelCodes") as string[]);
 
   revalidatePath("/admin/itens");
   redirect("/admin/itens");

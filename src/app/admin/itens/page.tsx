@@ -64,6 +64,9 @@ export default async function ItensPage() {
                   <Link href={`/admin/itens/${item.id}/editar`} className="text-brand-purple hover:underline">
                     Editar
                   </Link>
+                  <Link href={`/admin/itens/${item.id}/editar#fotos`} className="text-brand-purple hover:underline">
+                    Foto
+                  </Link>
                   <form
                     action={async () => {
                       "use server";

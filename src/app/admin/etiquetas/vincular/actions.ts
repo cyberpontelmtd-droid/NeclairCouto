@@ -13,6 +13,8 @@ export async function linkLabelAndCreateItem(code: string, formData: FormData) {
 
   const parsed = parseItemForm(formData);
   const categoryId = await resolveCategoryId(parsed.categoryId, parsed.newCategoryName);
+  const extraCodes = formData.getAll("labelCodes") as string[];
+  const allCodes = [...new Set([code, ...extraCodes.map((c) => c.trim()).filter(Boolean)])];
 
   const item = await prisma.$transaction(async (tx) => {
     const created = await tx.item.create({
@@ -27,8 +29,8 @@ export async function linkLabelAndCreateItem(code: string, formData: FormData) {
         categoryId,
       },
     });
-    await tx.label.update({
-      where: { id: label.id },
+    await tx.label.updateMany({
+      where: { code: { in: allCodes }, itemId: null },
       data: { itemId: created.id, linkedAt: new Date() },
     });
     return created;

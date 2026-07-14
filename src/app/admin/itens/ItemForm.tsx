@@ -1,5 +1,7 @@
 import type { Category, Item, ItemImage } from "@prisma/client";
 import { deleteItemImage } from "./actions";
+import { LabelLinker } from "./LabelLinker";
+import { PhotoCapture } from "./PhotoCapture";
 
 type ItemWithImages = Item & { images: ItemImage[] };
 
@@ -7,10 +9,14 @@ export function ItemForm({
   item,
   categories,
   action,
+  existingLabelCodes = [],
+  initialLabelCodes = [],
 }: {
   item?: ItemWithImages;
   categories: Category[];
   action: (formData: FormData) => Promise<void>;
+  existingLabelCodes?: string[];
+  initialLabelCodes?: string[];
 }) {
   return (
     <form action={action} className="bg-white rounded-2xl shadow-sm p-6 md:p-8 flex flex-col gap-5 max-w-2xl">
@@ -101,17 +107,12 @@ export function ItemForm({
         />
       </div>
 
-      <div>
+      <LabelLinker existingCodes={existingLabelCodes} initialCodes={initialLabelCodes} />
+
+      <div id="fotos" className="scroll-mt-6">
         <label className="block text-sm font-medium text-brand-dark mb-1">Fotos</label>
-        <input
-          name="images"
-          type="file"
-          accept="image/*"
-          multiple
-          className="w-full text-sm"
-        />
         {item && item.images.length > 0 && (
-          <div className="flex flex-wrap gap-3 mt-3">
+          <div className="flex flex-wrap gap-3 mb-3">
             {item.images.map((img) => (
               <div key={img.id} className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -134,6 +135,7 @@ export function ItemForm({
             ))}
           </div>
         )}
+        <PhotoCapture />
       </div>
 
       <label className="flex items-center gap-2 text-sm text-brand-dark">

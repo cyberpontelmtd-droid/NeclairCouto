@@ -11,7 +11,7 @@ export default async function EditarItemPage({
   const { id } = await params;
 
   const [item, categories] = await Promise.all([
-    prisma.item.findUnique({ where: { id }, include: { images: true } }),
+    prisma.item.findUnique({ where: { id }, include: { images: true, labels: true } }),
     prisma.category.findMany({ orderBy: { name: "asc" } }),
   ]);
 
@@ -22,7 +22,12 @@ export default async function EditarItemPage({
   return (
     <div>
       <h1 className="text-2xl font-bold text-brand-dark mb-6">Editar peça — {item.name}</h1>
-      <ItemForm item={item} categories={categories} action={boundUpdate} />
+      <ItemForm
+        item={item}
+        categories={categories}
+        action={boundUpdate}
+        existingLabelCodes={item.labels.map((l) => l.code)}
+      />
     </div>
   );
 }

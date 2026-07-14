@@ -54,7 +54,11 @@ export default async function VincularEtiquetaPage({
       <p className="text-gray-500 text-sm mb-6">
         Vinculando à etiqueta <span className="font-mono text-brand-purple">{code}</span>
       </p>
-      <ItemForm categories={categories} action={linkLabelAndCreateItem.bind(null, code)} />
+      <ItemForm
+        categories={categories}
+        action={linkLabelAndCreateItem.bind(null, code)}
+        initialLabelCodes={[code]}
+      />
     </div>
   );
 }

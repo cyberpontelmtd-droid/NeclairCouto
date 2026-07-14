@@ -42,7 +42,7 @@ model Item {
   categoryId  String?
   category    Category?   @relation(fields: [categoryId], references: [id])
   images      ItemImage[]
-  label       Label?
+  labels      Label[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
@@ -50,7 +50,7 @@ model Item {
 model Label {
   id        String    @id @default(cuid())
   code      String    @unique
-  itemId    String?   @unique
+  itemId    String?
   item      Item?     @relation(fields: [itemId], references: [id])
   createdAt DateTime  @default(now())
   linkedAt  DateTime?
