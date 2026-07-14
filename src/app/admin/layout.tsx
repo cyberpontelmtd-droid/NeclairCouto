@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { auth, signOut } from "@/lib/auth";
+import { MobileNav } from "./MobileNav";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
 
   return (
     <div className="min-h-screen bg-brand-pink/30 print:bg-white">
-      <header className="print:hidden bg-brand-dark text-white">
+      <header className="print:hidden bg-brand-dark text-white relative">
         <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-2">
             <div className="relative w-8 h-8">
@@ -36,6 +37,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 Sair
               </button>
             </form>
+            <MobileNav />
           </div>
         </div>
       </header>
